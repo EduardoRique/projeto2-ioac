@@ -2,15 +2,29 @@
 #define CACHE_H
 
 #include <iostream>
-//#include <map>
+#include <map>
 
-void Show();
+using namespace std;
 
-void Direto(int palavras, int linhas, int principal);
+void Show(map<int,int> cache, int principal, int linhas, int palavras);
 
-void Totalmente_Associativo(int palavras, int linhas, int principal, int mapeamento, int substituicao);
+void Direto(map<int,int> &cache, int palavras, int linhas, int principal, int x);
 
-void Parcialmente_Associativo(int palavras, int linhas, int principal, int set, int mapeamento, int substituicao);
+void Aleatorio_TA(int palavras, int linhas, int principal);
+
+void FIFO_TA(int palavras, int linhas, int principal);
+
+void LFU_TA(int palavras, int linhas, int principal);
+
+void LRU_TA(int palavras, int linhas, int principal);
+
+void Aleatorio_PA(int palavras, int linhas, int principal, int set);
+
+void FIFO_PA(int palavras, int linhas, int principal, int set);
+
+void LFU_PA(int palavras, int linhas, int principal, int set);
+
+void LRU_PA(int palavras, int linhas, int principal, int set);
 
 
 #endif

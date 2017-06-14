@@ -51,42 +51,54 @@ int main(){
 
         menu(x, show, (palavras*principal));
 
+        if(show){
+            Show(cache, principal, linhas, palavras);
+        }
+
         if(mapeamento == 1){
                 
-                if(show){
-                    Show();
-                }
-                
                 if(x>=0 && x<= (palavras*principal) && !show){
-                    Direto(palavras, linhas, principal);
+                    Direto(cache, palavras, linhas, principal, x);
                 }
-                show = false;    
         }
 
         else if(mapeamento == 2){
-                
-                if(show){
-                    Show();
-                }
                 if(x>=0 && x<= (palavras*principal) && !show){
-                    Totalmente_Associativo(palavras, linhas, principal, mapeamento, substituicao);
+                    if(substituicao == 1){
+                        Aleatorio_TA(palavras, linhas, principal);
+                    }
+                    else if(substituicao == 2){
+                        FIFO_TA(palavras, linhas, principal);
+                    }
+                    else if(substituicao == 3){
+                        LRU_TA(palavras, linhas, principal);
+                    }
+                    else if(substituicao == 4){
+                        LFU_TA(palavras, linhas, principal);
+                    }
                 }
-                show = false; 
         }
 
         else if(mapeamento == 3){
                 
-                if(show){
-                    Show();
-                    cout << "SHOW CACHE" << endl;
-                }
-                
                 if(x>=0 && x<= (palavras*principal) && !show){
-                    Parcialmente_Associativo(palavras, linhas, principal, set, mapeamento, substituicao);
-                     cout << "HIT OU MISS" << endl;
+                    if(substituicao == 1){
+                        Aleatorio_PA(palavras, linhas, principal, set);
+                    }
+                    else if(substituicao == 2){
+                        FIFO_PA(palavras, linhas, principal, set);
+                    }
+                    else if(substituicao == 3){
+                        LRU_PA(palavras, linhas, principal, set);
+                    }
+                    else if(substituicao == 4){
+                        LFU_PA(palavras, linhas, principal, set);
+                    }
                 }
-                show = false;
+                }
         }
+        show = false;
+        x = -1;
 
     }while(1);
 
